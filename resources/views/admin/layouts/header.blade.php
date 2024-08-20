@@ -4,7 +4,7 @@
 
             <!-- Header Logo (Header Left) Start -->
             <div class="header-logo col-auto">
-                <a href="index.html">
+                <a href="{{ route('admin.home') }}">
                     <img src="{{ asset('admin/assets/images/logo/logo.png') }}" alt="">
                     <img src="{{ asset('admin/assets/images/logo/logo-light.png') }}" class="logo-light" alt="">
                 </a>
@@ -192,13 +192,11 @@
                             <!--User-->
                             <li class="adomx-dropdown col-auto">
                                 <a class="toggle" href="#">
-                                            <span class="user">
+                                    <span class="user">
                                         <span class="avatar">
-                                            <img src="{{ asset('admin/assets/images/avatar/avatar-1.jpg') }}" alt="">
-                                            <span class="status"></span>
-                                            </span>
-                                            <span class="name">Madison Howard</span>
-                                            </span>
+                                            <img src="{{ asset('admin/assets/images/avatar/avatar-1.jpg') }}" alt=""></span>
+                                        <span class="name">{{ \Auth::user()->name }}</span>
+                                    </span>
                                 </a>
 
                                 <!-- Dropdown -->

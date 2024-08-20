@@ -34,6 +34,9 @@
     <!-- Custom Style CSS Only For Demo Purpose -->
     <link id="cus-style" rel="stylesheet" href="{{ asset('admin/assets/css/style-primary.css') }}">
 
+    @stack('styles')
+</head>
+
 </head>
 
 <body>
@@ -67,6 +70,7 @@
 <script src="{{ asset('admin/assets/js/plugins/tippy4.min.js.js') }}"></script>
 <!--Main JS-->
 <script src="{{ asset('admin/assets/js/main.js') }}"></script>
+@stack('scripts')
 
 <!-- Plugins & Activation JS For Only This Page -->
 
@@ -86,6 +90,15 @@
 <script src="{{ asset('admin/assets/js/plugins/vmap/maps/jquery.vmap.world.js') }}"></script>
 <script src="{{ asset('admin/assets/js/plugins/vmap/maps/samples/jquery.vmap.sampledata.js') }}"></script>
 <script src="{{ asset('admin/assets/js/plugins/vmap/vmap.active.js') }}"></script>
+
+<!--Filepond-->
+<script src="{{ asset(('admin/assets/js/filepond.js')) }}"></script>
+
+<!--Summernote-->
+<script src="{{ asset('admin/assets/js/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/plugins/summernote/summernote.active.js') }}"></script>
+<script src="{{ asset('admin/assets/js/plugins/quill/quill.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/plugins/quill/quill.active.js') }}"></script>
 
 </body>
 

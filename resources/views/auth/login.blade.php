@@ -39,7 +39,7 @@
 
                                     <div class="row">
                                         <div class="col-xl-12">
-                                                <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('Email Address') }}*">
+                                                <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus placeholder="{{ __('Email Address') }}*">
 
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                         </div>
 
                                         <div class="col-xl-12">
-                                            <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password*">
+                                            <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"  autocomplete="current-password" placeholder="Password*">
 
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">

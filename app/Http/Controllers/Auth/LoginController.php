@@ -18,12 +18,16 @@ class LoginController extends Controller
        $credentials = $request->validate([
            'email' => ['required', 'email'],
            'password' => ['required'],
+       ], [
+           'email.required' => 'Email không được để trống',
+           'email.email' => 'Email không đúng định dạng',
+           'password.required' => 'Mật khẩu không được để trống',
        ]);
 
        if (Auth::attempt($credentials)) {
            $request->session()->regenerate();
 
-           if(Auth::user()->type == 'admin'){
+           if(Auth::user()->type == '1'){
                return redirect()->intended('admin/home');
            }
 

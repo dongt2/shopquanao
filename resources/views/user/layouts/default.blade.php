@@ -259,6 +259,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsBrMPsyNtpwKXPPpG54XwJXnyobfMAIc"></script>
 
 
+
 <!-- Site Scripts -->
 <script src="{{ asset('assets/assets/js/app.js') }}"></script>
 

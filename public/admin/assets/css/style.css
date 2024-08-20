@@ -4,10 +4,10 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     01. Template default CSS
     02. Elements CSS
         Baisc ---------
@@ -246,6 +246,10 @@ img {
 
 .hidden {
   display: none;
+}
+
+.json-data{
+    display: none;
 }
 
 .clear {
@@ -14501,7 +14505,8 @@ body.skin-dark .cus-radio.light .icon::before {
     padding-right: 0 !important;
   }
   [dir="rtl"] .header-notification-area > li:last-child {
-    padding-left: 0 !important;
+    padding-left: 0
+ !important;
     padding-right: 10px !important;
   }
 }
@@ -15394,4 +15399,24 @@ body.skin-dark .cus-radio.light .icon::before {
 [dir="rtl"] .cus-radio .icon {
   left: auto;
   right: 0;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f2f2f2;
 }

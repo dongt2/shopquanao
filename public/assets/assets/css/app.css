@@ -435,6 +435,29 @@ p {
   visibility: visible;
 }
 
+.search-drop {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    opacity: 0;
+    padding: 8px 9px 10px;
+    position: absolute;
+    right: 0;
+    top: 90px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    visibility: hidden;
+    width: 300px;
+    z-index: 9999999;
+    -webkit-box-shadow: 0px 20px 20px 0px rgba(80, 100, 126, 0.4);
+    box-shadow: 0px 20px 20px 0px rgba(80, 100, 126, 0.4);
+}
+
+.top-search .search-drop.active {
+    opacity: 1;
+    top: 102px;
+    visibility: visible;
+}
 .cart-img {
   display: inline-block;
   float: left;
@@ -2826,6 +2849,7 @@ a.btn-two::after {
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   text-transform: uppercase;
+  margin-top: 30px;
 }
 
 .bc-inner p a {
@@ -7379,3 +7403,6 @@ p.sub-title {
     margin-bottom: 30px ;
 }
 
+a {
+    text-decoration: none;
+}

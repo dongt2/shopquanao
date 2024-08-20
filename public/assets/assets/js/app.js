@@ -338,7 +338,11 @@ var THEMEIM = THEMEIM || {};
 
       $(".top-search a").on('click', function() {
         $(".search-input").toggleClass("active");
+          $(".search-drop").toggleClass("active");
+
       });
+
+
 
 
 
@@ -698,15 +702,15 @@ var THEMEIM = THEMEIM || {};
   $(window).on('load', THEMEIM.documentOnLoad.init);
   $(window).on('resize', THEMEIM.documentOnResize.init);
   $(window).on('scroll', THEMEIM.documentOnScroll.init);
-  
+
   /* ==========================================================================
     copyright year change
-    ========================================================================== */	
-	
+    ========================================================================== */
+
     function walkText(node) {
-    		
+
     var	date = (new Date()).getFullYear();
-    
+
       if (node.nodeType == 3) {
         node.data = node.data.replace(/2018/g, date);
       }

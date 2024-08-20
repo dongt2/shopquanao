@@ -170,11 +170,11 @@
                             <div class=" grid-item two col-6 col-md-6  col-lg-4 col-xl-3">
                                 <div class="sin-product style-one">
                                     <div class="pro-img">
-                                        <img src="{{ asset('assets/media/images/product/1.jpg') }}" alt="">
+                                        <img src="{{ asset($item->cover_image) }}" alt="" style="width: auto" >
                                     </div>
                                     <div class="mid-wrapper">
-                                        <h5 class="pro-title"><a href="product.html">{{ $item->name }}</a></h5>
-                                        <span>$60.00</span>
+                                        <h5 class="pro-title"><a href="{{ route('product.show', $item->id) }}">{{ $item->name }}</a></h5>
+                                        <span>{{ $item->price }}đ</span>
                                     </div>
 
                                     <div class="pro-icon">
@@ -329,7 +329,7 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
-{{--                            {{ $products->links('pagination::bootstrap-5') }}--}}
+                            {{ $products->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
                 </div>

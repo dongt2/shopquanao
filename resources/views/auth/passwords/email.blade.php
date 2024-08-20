@@ -47,7 +47,7 @@
 
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <input type="email" placeholder="{{ __('Email Address') }}*" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input type="email" placeholder="{{ __('Email Address') }}*" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
                                 </div>
                                 <div class="col-xl-12">
                                     <input type="submit" value="Send Password Reset Link">

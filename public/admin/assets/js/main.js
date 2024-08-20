@@ -6,6 +6,9 @@
 var $window = $(window);
 var $body = $('body');
 
+
+
+
 /*--
     Adomx Dropdown (Custom Dropdown)
 -----------------------------------*/
@@ -32,6 +35,7 @@ if ($('.adomx-dropdown').length) {
             $adomxDropdownMenu.removeClass('show');
         }
     });
+
 }
 
 /*--
@@ -76,7 +80,7 @@ $sideHeaderToggle.on('click', function(){
 $sideHeaderClose.on('click', function(){
     $sideHeader.removeClass('show').addClass('hide');
 });
-    
+
 /*--
     Side Header Menu
 -----------------------------------*/
@@ -128,7 +132,7 @@ tippy('.tippy, [data-tippy-content], [data-tooltip]', {
     boundary: 'window',
 });
 
-/*-- 
+/*--
     Selectable Table
 -----------------------------------*/
 function tableSelectable() {
@@ -157,8 +161,8 @@ function tableSelectable() {
     });
 }
 tableSelectable();
-    
-/*-- 
+
+/*--
     To Do List
 -----------------------------------*/
 function todoList() {
@@ -213,7 +217,7 @@ function todoList() {
     });
 }
 todoList();
-    
+
 /*--
     Chat Contact
 -----------------------------------*/
@@ -236,8 +240,8 @@ function resize() {
 $window.on('resize', function(){
     resize();
 });
-    
-    
+
+
 function customizer() {
     var $cusHtml = '<div class="customizer-wrapper">';
     $cusHtml += '<a href="#" class="customizer-toggle"><i class="ti-settings"></i></a>';
@@ -294,9 +298,9 @@ function customizer() {
     $cusHtml += '</div>';
     $cusHtml += '</div>';
     $cusHtml += '</div>';
-    
+
     $body.prepend($cusHtml)
-    
+
     $window.on('load', function(){
         var customizerWrapper = $('.customizer-wrapper'),
             customizerToggle = $('.customizer-toggle'),
@@ -309,7 +313,7 @@ function customizer() {
             e.preventDefault();
             customizerWrapper.toggleClass('open');
         });
-        
+
         /*Dark & RTL*/
         toggleDARK.on('click', function(){
             var $this = $(this);
@@ -333,7 +337,7 @@ function customizer() {
                 $body.removeAttr('dir', 'rtl');
             }
         });
-        
+
         /*Side Header & Top Header*/
         customRadioNotColor.on('click', function(e){
             e.preventDefault();
@@ -363,16 +367,21 @@ function customizer() {
             $('#cus-style').attr('href', 'assets/css/style-'+$color+'.css');
         });
     });
-    
+
+
 }
 customizer();
 
 /*--
     Custom Scrollbar (Perfect Scrollbar)
------------------------------------*/ 
+-----------------------------------*/
 $('.custom-scroll').each( function() {
     var ps = new PerfectScrollbar($(this)[0]);
 });
-    
+
 })(jQuery);
+
+
+
+
 

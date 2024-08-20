@@ -1,9 +1,3 @@
-<!--=========================-->
-<!--=        Header         =-->
-<!--=========================-->
-
-
-
 <header id="header" class="header-area">
     <div class="top-bar">
         <div class="container-fluid custom-container">
@@ -58,9 +52,32 @@
             <div class="col-lg-12 col-xl-7 order-lg-3 order-xl-2 menu-container">
                 <div class="mainmenu">
                     <ul id="navigation">
-                        <li class="has-child "><a href="{{ route('home') }}" class="active">home</a></li>
+                        <li class="nav-item "><a href="{{ route('home') }}" class="active">home</a></li>
 
-                        <li class="has-child"><a href="{{ route('shop') }}">Shop</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ route('shop') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Shop
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div style="display: none">
+                                {{ $categoriesHeader = \App\Models\Product::query()->select('products.*','categories.id' , 'categories.name as category_name')
+                                                                        ->join('categories', 'categories.id', '=', 'category_id')
+                                                                        ->get() }}
+                                </div>
+
+                                @if($categoriesHeader != '')
+                                    @foreach($categoriesHeader as $item)
+                                        <a class="dropdown-item" href="{{ route('category', $item->category_id) }}">{{ $item->category_name }}</a>
+                                    @endforeach
+                                @endif
+{{--                                    @foreach($categories as $item)--}}
+{{--                                        <ul class="dropdown-item">{{ $item->name }}</ul>--}}
+{{--                                    @endforeach--}}
+
+                            </div>
+
+                        </li>
 
                     </ul>
                 </div>
@@ -95,7 +112,7 @@
                             </li>
                             @endguest
                         <li class="top-cart">
-                            <a href="javascript:void(0)"><i class="fa fa-shopping-cart" aria-hidden="true"></i> (2)</a>
+                            <a href="javascript:void(0)"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                             <div class="cart-drop">
                                 <div class="single-cart">
                                     <div class="cart-img">
@@ -109,18 +126,18 @@
                                     </div>
                                     <a href="#"><i class="fa fa-times"></i></a>
                                 </div>
-                                <div class="single-cart">
-                                    <div class="cart-img">
-                                        <img alt="" src="{{ asset('assets/media/images/product/car2.jpg') }}">
-                                    </div>
-                                    <div class="cart-title">
-                                        <p><a href="#">Quisque In Arcuc</a></p>
-                                    </div>
-                                    <div class="cart-price">
-                                        <p>1 x $200</p>
-                                    </div>
-                                    <a href="#"><i class="fa fa-times"></i></a>
-                                </div>
+{{--                                <div class="single-cart">--}}
+{{--                                    <div class="cart-img">--}}
+{{--                                        <img alt="" src="{{ asset('assets/media/images/product/car2.jpg') }}">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="cart-title">--}}
+{{--                                        <p><a href="#">Quisque In Arcuc</a></p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="cart-price">--}}
+{{--                                        <p>1 x $200</p>--}}
+{{--                                    </div>--}}
+{{--                                    <a href="#"><i class="fa fa-times"></i></a>--}}
+{{--                                </div>--}}
                                 <div class="cart-bottom">
                                     <div class="cart-sub-total">
                                         <p>Sub-Total <span>$700</span></p>
@@ -146,7 +163,12 @@
                         <li class="top-search">
                             <a href="javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i>
                             </a>
-                            <input type="text" class="search-input" placeholder="Search">
+
+                            <input type="text" class="search-input" placeholder="Search" id="search" name="search">
+
+                            <div class="search-drop" id="search-drop">
+
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -156,6 +178,61 @@
     <!--Container-Fluid-->
 </header>
 <!--Main Header end-->
+
+
+
+    <script>
+        let search = document.querySelector('#search');
+        search.addEventListener('keyup', function (event) {
+            // console.log(search.value)
+            let url = '{{ route('search') }}';
+
+            fetch(url, {
+                headers : {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    'search': event.target.value
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    let searchDrop = document.querySelector('#search-drop');
+                    let searchDropHtml = '';
+                    if(data.message == 'success' && data.data.length != 0){
+                        data.data.forEach(item => {
+                            searchDropHtml += `
+
+                                            <div class="single-cart">
+                                                <div class="cart-img">
+                                                    <img alt="" src="${item.cover_image}" style="height: 80px">
+                                                </div>
+
+                                                <p><a href="">${item.name}</a></p>
+                                                <p>${item.price}đ</p>
+                                            </div>
+
+
+
+
+                                        `
+                        })
+                    } else {
+                        searchDropHtml = `
+                            <div class="single-cart">
+                                <p>No data found</p>
+                            </div>
+                        `
+                    }
+                    searchDrop.innerHTML = searchDropHtml;
+                })
+        });
+    </script>
+
+
 
 
 
